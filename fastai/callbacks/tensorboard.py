@@ -28,7 +28,7 @@ class LearnerTensorboardWriter(LearnerCallback):
     def __init__(self, learn:Learner, base_dir:Path, name:str, loss_iters:int=25, hist_iters:int=500, stats_iters:int=100):
         super().__init__(learn=learn)
         self.base_dir,self.name,self.loss_iters,self.hist_iters,self.stats_iters  = base_dir,name,loss_iters,hist_iters,stats_iters
-        log_dir = base_dir/name
+        log_dir = f'{base_dir}/{name}'
         self.tbwriter = SummaryWriter(str(log_dir))
         self.hist_writer = HistogramTBWriter()
         self.stats_writer = ModelStatsTBWriter()
